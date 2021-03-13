@@ -2,7 +2,14 @@
 ## About project
 This project aims to create a simple order processing program.
 ## Used technology
-C#,
+PHP8,
+Laravel,
+Bootstrap,
+HTML5,
+CSS,
+JS,
+jQuery,
+AJAX,
 Firebase,
 npm
 ## Features
