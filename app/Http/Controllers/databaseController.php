@@ -21,7 +21,7 @@ class databaseController extends Controller
     }
     private function set_client_id()
     {
-        return 0;
+        return 1;
     }
     private function add_client(array $client)
     {
@@ -42,6 +42,19 @@ class databaseController extends Controller
     }
     public function index()
     {
+       // echo (json_encode($this->database->getReference('clients')->orderByKey()
+         //   ->getSnapshot()->getValue())); //Show all data (non include keys!
+
+        // echo (); //Show how many clients we have
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
         $this->add_client([
             'company_name' => "FHU Rakieta Remis",
             'email' => "rakieta@remis.com",
@@ -54,16 +67,6 @@ class databaseController extends Controller
             ],
             'phone_number' => '111222333',
         ]);
-    }
-   
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**

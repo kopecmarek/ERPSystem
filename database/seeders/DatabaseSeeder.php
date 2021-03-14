@@ -15,5 +15,10 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
+        //$this->createClients(5);
+    }
+    private function createClients($amount){
+        for($amount; $amount!=0; $amount--)
+            app('App\Http\Controllers\firebaseLogic')->_create("clients", \App\Models\client::factory()->definition());
     }
 }

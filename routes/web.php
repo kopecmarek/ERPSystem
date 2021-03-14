@@ -17,4 +17,6 @@ Route::get('/', function () {
     return view('main');
 });
 
-Route::get('firebase',[App\Http\Controllers\databaseController::class, 'index']);
+Route::get('createfirebase',[App\Http\Controllers\databaseController::class, 'create']);
+Route::get('showfirebase',[App\Http\Controllers\databaseController::class, 'index']);
+Route::get('test',[App\Http\Controllers\firebaseLogic::class, 'stworz']);

@@ -6,20 +6,40 @@ use Illuminate\Http\Request;
 
 class firebaseLogic extends Controller
 {
-    private function getLastID(string $rootName)
+    protected $database;
+    public function __construct()
     {
-
+        $this->database = app('firebase.database');
     }
-
-    private function count(string $rootName)
+    private function getLastID(string $rootName):int //rootName = clients or orders
     {
-
+        return json_encode($this->database->getReference($rootName)->orderByKey()
+            ->getSnapshot()->numChildren());
     }
 
     public function _create($rootName, array $data)
     {
-
+        $this->database->getReference($rootName.'/'.$this->getLastID($rootName))
+            ->set($data);
     }
+/*
+    public function stworz()
+    {
+        $this->_create("clients",
+            [
+                'company_name' => "FHU Rakieta Remis",
+                'email' => "rakieta@remis.com",
+                'address' => [
+                    'town' => "Kielce",
+                    'street' => "Towarowa",
+                    'house_number' => '4',
+                    'apartment_number' => '3',
+                    'zip_code' => '11-222',
+                ],
+                'phone_number' => '111222333',
+            ]
+        );
+    }*/
 
     public function _update($rootName, array $data)
     {
